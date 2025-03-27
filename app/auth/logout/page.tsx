@@ -13,7 +13,7 @@ export default function Page() {
         }
         callLogOutAction();
          
-        router.push('/');
+        window.location.href = 'https://next-auth-okta-chi.vercel.app/'
     }, []);
 
     return <p>Logging out...</p>;
