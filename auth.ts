@@ -3,30 +3,20 @@ import "next-auth/jwt"
 
 import Okta from "next-auth/providers/okta"
 
-// import { createStorage } from "unstorage"
-// import memoryDriver from "unstorage/drivers/memory"
-// import vercelKVDriver from "unstorage/drivers/vercel-kv"
-// import { UnstorageAdapter } from "@auth/unstorage-adapter"
-
-// const storage = createStorage({
-//   driver: process.env.VERCEL
-//     ? vercelKVDriver({
-//         url: process.env.AUTH_KV_REST_API_URL,
-//         token: process.env.AUTH_KV_REST_API_TOKEN,
-//         env: false,
-//       })
-//     : memoryDriver(),
-// })
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   debug: !!process.env.AUTH_DEBUG,
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
-  // adapter: UnstorageAdapter(storage),
   providers: [
     Okta({
       clientId: process.env.OKTA_CLIENT_ID,
       clientSecret: process.env.OKTA_CLIENT_SECRET,
-      issuer: process.env.OKTA_ISSUER
+      issuer: process.env.OKTA_ISSUER,
+      authorization: { 
+        params: { 
+          scope: "openid email profile offline_access" 
+        } 
+      }
     })
   ],
   basePath: "/auth",
