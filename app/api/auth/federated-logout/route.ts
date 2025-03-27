@@ -13,4 +13,4 @@ async function handler(req: NextRequest) {
     }
 }
 
-export { handler as GET, handler as POST }
+export { handler as GET }
