@@ -12,7 +12,7 @@ export default function Page() {
             await logout();
         }
         callLogOutAction();
-        setInterval(() => console.log('//HACK: waiting for server side logout to complete', 300)); 
+        setTimeout(() => console.log('//HACK: waiting for server side logout to complete', 400)); 
         window.location.href = 'https://next-auth-okta-chi.vercel.app/'
     }, []);
 
