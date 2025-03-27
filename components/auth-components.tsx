@@ -23,8 +23,8 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
     <form
       action={async () => {
         "use server"
-        await signOut()
-        // redirect("/auth/federated-sign-out")
+        // await signOut()
+        redirect("/auth/federated-sign-out")
       }}
       className="w-full"
     >

@@ -1,8 +1,12 @@
 import { signOut } from "auth";
-import { useEffect } from "react";
 
 export default async function Logout() {
-    const result = await signOut();
+    const result = await signOutOfNextAuth();
 
     return <p>Logging out...</p>;
 }
+
+async function signOutOfNextAuth() {
+    'use server'
+    await signOut();
+  }
