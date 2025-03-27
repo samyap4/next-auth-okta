@@ -1,5 +1,6 @@
 import { signIn, signOut } from "auth"
 import { Button } from "./ui/button"
+import router from "next/router"
 
 export function SignIn({
   provider,
@@ -19,16 +20,24 @@ export function SignIn({
 
 export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
   return (
-    <form
-      action={async () => {
-        "use server"
-        await signOut()
-      }}
-      className="w-full"
-    >
-      <Button variant="ghost" className="w-full p-0" {...props}>
+    // <form
+    //   action={async () => {
+    //     "use server"
+    //     await signOut()
+    //   }}
+    //   className="w-full"
+    // >
+    //   <Button variant="ghost" className="w-full p-0" {...props}>
+    //     Sign Out
+    //   </Button>
+    // </form>
+
+      <Button variant="ghost" className="w-full p-0" {...props} onClick={signOutHandler}>
         Sign Out
       </Button>
-    </form>
   )
+}
+
+function signOutHandler() {
+  router.push("/auth/federated-sign-out");
 }
