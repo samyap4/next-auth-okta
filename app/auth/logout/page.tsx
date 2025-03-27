@@ -1,16 +1,19 @@
 'use client'
 
-import {signOut} from "next-auth/react";
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { logout } from "../actions/logout-action";
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
+    const router = useRouter();
+
     useEffect(() => {
-         // window.location.href = `https://next-auth-okta-chi.vercel.app/auth/signout`;
-         async function callLogOutAction() {
+        async function callLogOutAction() {
             await logout();
-         }
-         callLogOutAction();         
+        }
+        callLogOutAction();
+         
+        router.push('/');
     }, []);
 
     return <p>Logging out...</p>;
