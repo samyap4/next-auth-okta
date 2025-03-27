@@ -11,14 +11,18 @@ export default function LogoutPage() {
     async function handleLogout() {
       try {
         await logout(); // Call server action
-        router.push('/'); // Navigate to home route on success
       } catch (error) {
-        console.error("Logout failed:", error);
+        // @ts-ignore
+        if (error.message !== "NEXT_REDIRECT") {
+          console.error("Logout failed:", error);
+        }
+      } finally {
+        router.push('/'); // Always navigate to home route
       }
     }
 
     handleLogout(); // Trigger logout on mount
-  }, [router]); // Run only once on mount
+  }, [router]);
 
   return <p>Logging out...</p>;
 }
