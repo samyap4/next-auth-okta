@@ -2,7 +2,7 @@
 import { getToken } from "next-auth/jwt"
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function federatedLogout(req: NextRequest, res: NextResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
     
     if (req.method === 'POST') {
         try {
