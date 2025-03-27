@@ -8,7 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
-import { SignIn, SignOut } from "./auth-components"
+import { SignIn } from "./auth-components"
+import router from "next/router"
 
 export default async function UserButton() {
   const session = await auth()
@@ -50,4 +51,16 @@ export default async function UserButton() {
       </DropdownMenu>
     </div>
   )
+}
+
+function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
+  return (
+      <Button variant="ghost" className="w-full p-0" {...props} onClick={signOutHandler}>
+        Sign Out
+      </Button>
+  )
+}
+
+function signOutHandler() {
+  router.push("/auth/federated-sign-out");
 }
