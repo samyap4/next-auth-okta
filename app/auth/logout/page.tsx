@@ -1,15 +1,8 @@
-import { signOut } from "next-auth/react";
-import { useRouter } from "next/router";
+import { signOut } from "auth";
 import { useEffect } from "react";
 
-export default function Logout() {
-    const router = useRouter();
-
-    useEffect(() => {
-        signOut({ redirect: false }).then(() => {
-            router.push("/");
-        });
-    }, []);
+export default async function Logout() {
+    const result = await signOut();
 
     return <p>Logging out...</p>;
 }
