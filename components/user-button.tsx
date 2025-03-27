@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
 import { SignIn } from "./auth-components"
-import router from "next/router"
+import { redirect } from "next/navigation"
 
 export default async function UserButton() {
   const session = await auth()
@@ -62,5 +62,5 @@ function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
 }
 
 function signOutHandler() {
-  router.push("/auth/federated-sign-out");
+  redirect("/auth/federated-sign-out");
 }
