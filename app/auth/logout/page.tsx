@@ -5,7 +5,7 @@ import {useEffect} from "react";
 
 export default function Page() {
     useEffect(() => {
-        void signOut();
+        window.location.href = `https://next-auth-okta-chi.vercel.app/api/auth/signout`;
     }, []);
 
     return <p>Logging out...</p>;
