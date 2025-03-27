@@ -9,7 +9,8 @@ export default function Page() {
 
     useEffect(() => {
         async function callLogOutAction() {
-            await logout();
+            const result = await logout();
+            console.log(result);
             window.location.href = 'https://next-auth-okta-chi.vercel.app/'
         }
         callLogOutAction();
