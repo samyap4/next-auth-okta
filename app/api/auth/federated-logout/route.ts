@@ -7,7 +7,7 @@ async function handler(req: NextRequest) {
     try {
         const session = await auth();
         console.log('session', session);
-        const endsessionURL = `https://${process.env.OKTA_ISSUER}/v1/logout?id_token_hint=${session?.idToken}&post_logout_redirect_uri=${process.env.NEXT_AUTH_LOGOUT_ROUTE}`
+        const endsessionURL = `${process.env.OKTA_ISSUER}/v1/logout?id_token_hint=${session?.idToken}&post_logout_redirect_uri=${process.env.NEXT_AUTH_LOGOUT_ROUTE}`
         return NextResponse.redirect(`${endsessionURL}`)
     } catch (error) {
         console.log('error', error);
@@ -15,6 +15,6 @@ async function handler(req: NextRequest) {
     }
 }
 
-export { handler as GET }
+export { handler as GET, }
 
 

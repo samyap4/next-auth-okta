@@ -5,9 +5,7 @@ import {useEffect} from "react";
 
 export default function Page() {
     useEffect(() => {
-        void signOut({
-            callbackUrl: "/",
-        });
+        void signOut();
     }, []);
 
     return <p>Logging out...</p>;
