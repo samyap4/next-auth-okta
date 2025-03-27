@@ -8,8 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
-import { SignIn } from "./auth-components"
-import { redirect } from "next/navigation"
+import { SignIn, SignOut } from "./auth-components"
 
 export default async function UserButton() {
   const session = await auth()
@@ -51,16 +50,4 @@ export default async function UserButton() {
       </DropdownMenu>
     </div>
   )
-}
-
-function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
-  return (
-      <Button variant="ghost" className="w-full p-0" {...props} onClick={signOutHandler}>
-        Sign Out
-      </Button>
-  )
-}
-
-function signOutHandler() {
-  redirect("/auth/federated-sign-out");
 }

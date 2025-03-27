@@ -1,5 +1,6 @@
 import { signIn, signOut } from "auth"
 import { Button } from "./ui/button"
+import { redirect } from "next/navigation"
 
 export function SignIn({
   provider,
@@ -22,7 +23,8 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
     <form
       action={async () => {
         "use server"
-        await signOut()
+        // await signOut()
+        redirect("/auth/federated-sign-out")
       }}
       className="w-full"
     >
@@ -32,3 +34,5 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
     </form>
   )
 }
+
+
