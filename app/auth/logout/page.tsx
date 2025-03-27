@@ -10,10 +10,9 @@ export default function Page() {
     useEffect(() => {
         async function callLogOutAction() {
             await logout();
+            window.location.href = 'https://next-auth-okta-chi.vercel.app/'
         }
         callLogOutAction();
-        setTimeout(() => console.log('//HACK: waiting for server side logout to complete', 2000)); 
-        window.location.href = 'https://next-auth-okta-chi.vercel.app/'
     }, []);
 
     return <p>Logging out...</p>;
