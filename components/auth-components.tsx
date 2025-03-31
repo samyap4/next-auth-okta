@@ -1,6 +1,5 @@
 import { signIn, signOut } from "auth"
 import { Button } from "./ui/button"
-import { redirect } from "next/navigation"
 
 export function SignIn({
   provider,
@@ -24,7 +23,6 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
       action={async () => {
         "use server"
         await signOut()
-        // redirect("/auth/federated-sign-out")
       }}
       className="w-full"
     >
